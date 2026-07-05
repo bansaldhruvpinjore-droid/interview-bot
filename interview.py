@@ -15,6 +15,7 @@ Run with: python interview.py
 """
 
 import os
+import re
 import sys
 import json
 import time
@@ -84,6 +85,15 @@ def ask_ai(prompt: str) -> str:
 
     logger.error(f"AI service failed after 4 attempts. Last error: {last_error}")
     raise AIServiceError(f"AI service unavailable after 4 attempts: {last_error}")
+
+
+def parse_score(feedback: str) -> Optional[int]:
+    """Extract the numeric score (out of 10) from a feedback string like
+    'Score: 7/10\nFeedback: ...'. Returns None if no score pattern is found."""
+    match = re.search(r"Score:\s*(\d{1,2})\s*/\s*10", feedback, re.IGNORECASE)
+    if match:
+        return int(match.group(1))
+    return None
 
 
 def get_role() -> str:
