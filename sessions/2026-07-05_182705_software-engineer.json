@@ -1,0 +1,34 @@
+{
+  "role": "software engineer",
+  "timestamp": "2026-07-05T18:27:05.054770",
+  "completed": true,
+  "num_questions_answered": 5,
+  "transcript": [
+    {
+      "question": "Describe a complex technical problem you solved recently. Walk me through your thought process, the trade-offs you considered, and how you validated your solution.",
+      "answer": "dont know",
+      "feedback": "Score: 3/10  \nFeedback: Honesty about not having a recent example is a strength, showing transparency. However, for a software engineer role, you should prepare a specific problem-solving scenario in advance. The answer lacks the expected technical narrative, trade-off analysis, and validation process, which are critical to assess problem-solving depth. Focus on rehearsing a concise, structured story highlighting key technical challenges."
+    },
+    {
+      "question": "\"Describe a situation whereyou had to advocate for a technical approach that was challenging to implement, and how you communicated its benefits to stakeholders who were skeptical. What was the",
+      "answer": "dont know",
+      "feedback": "Score: 4/10  \nFeedback: The answer lacks specificity, which is critical for demonstrating problem-solving and communication skills. The candidate should provide a concrete example of advocating for a technical solution, detailing the challenge, how they framed the benefits, and the outcome. Improvement would involve practicing storytelling (e.g., using the STAR framework) and aligning technical arguments with business goals to address stakeholder concerns. An example of preparation could help salvage such questions in the future."
+    },
+    {
+      "question": "Can you describe a situation where you had to advocate for a technical approach that was challenging to implement, and how you communicated its benefits to stakeholders who were skeptical? What was the outcome of your effort?",
+      "answer": "dont know",
+      "feedback": "Score: 6/10  \nFeedback: The candidate didn't provide a detailed enough account, which makes it hard to evaluate their problem-solving and communication skills. Strength lay in showing intent to explain the approach, but increasing specificity and business impact would improve the response. Overall, a solid but refined answer would boost the score."
+    },
+    {
+      "question": "Tellme about a time you discovered a significant bug or performance issue in production. How did you investigate it, what was the root cause, and what changes did you put in place to prevent similar issues from reaching users in the future?",
+      "answer": "dont know",
+      "feedback": "User Safety: safe"
+    },
+    {
+      "question": "Can you describe a time when you had to decide between optimizing an existing feature for performance versus delivering a new feature on schedule, how did you evaluate the trade",
+      "answer": "dont know",
+      "feedback": "Score: 4/10  \nFeedback: The answer lacks specificity and fails to demonstrate problem-solving or real-world experience, which are critical for this question. A strong response would include a concrete example, explain how you evaluated trade-offs (e.g., user impact, technical debt, timelines), and highlight your decision-making process. Instead, the candidate avoided the scenario entirely, missing an opportunity to showcase adaptability and prioritization skills. A better approach would involve discussing how they balance short-term delivery with long-term performance gains."
+    }
+  ],
+  "summary": "**Overall Summary:**  \nThe candidate demonstrated honesty and transparency but struggled significantly with interview preparation, consistently defaulting to \"dont know\" for technical and behavioral questions. While their intent to explain approaches or outcomes was noted, the lack of specific examples hindered the evaluation of problem-solving, communication, and decision-making skills. Key strengths include honesty and willingness to reflect, but recurring weaknesses include insufficient preparation, vague storytelling, and failure to structure answers with concrete scenarios. Before a real interview, they should practice articulating specific, structured stories (e.g., using the STAR framework), anticipate technical challenges, and align technical decisions with business goals. The overall score is **4/10**, reflecting a need for substantial improvement in demonstrating technical depth and situational awareness."
+}

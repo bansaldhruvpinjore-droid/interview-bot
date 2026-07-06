@@ -1,9 +1,10 @@
 ﻿"""
-Text-Only Interview Bot (Version 1 — hardened)
+Text-Only Interview Bot (Version 1 -- hardened)
 ------------------------------------------------
 A terminal app that:
   1. Asks the user to pick a role
-  2. Generates interview questions with a free AI model via OpenRouter
+  2. Generates interview questions across varied categories with a free
+     AI model via OpenRouter
   3. Takes typed answers
   4. Gets AI feedback + a score for each answer
   5. Prints a final summary
@@ -19,6 +20,7 @@ import re
 import sys
 import json
 import time
+import random
 import logging
 from datetime import datetime
 from typing import Optional
@@ -57,13 +59,22 @@ client = OpenAI(
 MODEL = "openrouter/free"
 NUM_QUESTIONS = 5
 
+QUESTION_CATEGORIES = [
+    "Behavioral (a story about a past experience)",
+    "Technical / role-specific skills",
+    "Problem-solving / analytical thinking",
+    "Communication and stakeholder management",
+    "Leadership and ownership",
+    "Situational judgment (a hypothetical scenario)",
+]
+
 
 class AIServiceError(Exception):
     """Raised when the AI backend fails after all retries are exhausted."""
     pass
 
 
-def ask_ai(prompt: str) -> str:
+def ask_ai(prompt: str, temperature: float = 0.8) -> str:
     last_error = None
     for attempt in range(1, 5):
         try:
@@ -71,6 +82,7 @@ def ask_ai(prompt: str) -> str:
             response = client.chat.completions.create(
                 model=MODEL,
                 max_tokens=500,
+                temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
             )
             content = response.choices[0].message.content
@@ -88,12 +100,34 @@ def ask_ai(prompt: str) -> str:
 
 
 def parse_score(feedback: str) -> Optional[int]:
-    """Extract the numeric score (out of 10) from a feedback string like
-    'Score: 7/10\nFeedback: ...'. Returns None if no score pattern is found."""
     match = re.search(r"Score:\s*(\d{1,2})\s*/\s*10", feedback, re.IGNORECASE)
     if match:
         return int(match.group(1))
     return None
+
+
+def assign_categories(num_questions: int) -> list:
+    pool = QUESTION_CATEGORIES.copy()
+    random.shuffle(pool)
+    if num_questions <= len(pool):
+        return pool[:num_questions]
+    result = []
+    while len(result) < num_questions:
+        random.shuffle(pool)
+        result.extend(pool)
+    return result[:num_questions]
+
+
+def is_too_similar(question: str, asked_so_far: list, threshold: float = 0.55) -> bool:
+    q_words = set(re.findall(r"\w+", question.lower()))
+    for prev in asked_so_far:
+        prev_words = set(re.findall(r"\w+", prev.lower()))
+        if not q_words or not prev_words:
+            continue
+        overlap = len(q_words & prev_words) / len(q_words | prev_words)
+        if overlap > threshold:
+            return True
+    return False
 
 
 def get_role() -> str:
@@ -106,17 +140,31 @@ def get_role() -> str:
     return role
 
 
-def generate_question(role: str, question_number: int, asked_so_far: list) -> str:
+def generate_question(role: str, question_number: int, asked_so_far: list, category: str) -> str:
     already_asked = "\n".join(f"- {q}" for q in asked_so_far) or "None yet"
     prompt = f"""You are an interviewer for a {role} position.
 Generate ONE realistic interview question (question #{question_number} of {NUM_QUESTIONS}).
 
+Category for this question: {category}
+
 Rules:
+- The question MUST fit the category above.
 - Do not repeat or closely resemble any of these already-asked questions:
 {already_asked}
-- Mix behavioral and technical/role-specific questions across the session.
 - Return ONLY the question text, nothing else (no preamble, no numbering)."""
-    return ask_ai(prompt)
+
+    question = ask_ai(prompt, temperature=0.9)
+
+    if is_too_similar(question, asked_so_far):
+        logger.warning("Generated question too similar to a previous one, regenerating...")
+        retry_prompt = prompt + (
+            "\n\nIMPORTANT: Your previous attempt was too similar to an "
+            "already-asked question. Use a genuinely different scenario, "
+            "wording, and angle this time, while staying in the same category."
+        )
+        question = ask_ai(retry_prompt, temperature=1.0)
+
+    return question
 
 
 def get_feedback(role: str, question: str, answer: str) -> str:
@@ -133,7 +181,7 @@ Give concise, constructive feedback (3-5 sentences) covering:
 Format your response as:
 Score: X/10
 Feedback: <your feedback>"""
-    return ask_ai(prompt)
+    return ask_ai(prompt, temperature=0.5)
 
 
 def generate_summary(role: str, transcript: list) -> str:
@@ -151,7 +199,7 @@ Write a short overall summary (5-8 sentences):
 - 2-3 recurring strengths
 - 2-3 things to work on before a real interview
 - An overall score out of 10"""
-    return ask_ai(prompt)
+    return ask_ai(prompt, temperature=0.5)
 
 
 def save_transcript(role: str, transcript: list, summary: Optional[str], completed: bool) -> str:
@@ -179,15 +227,17 @@ def save_transcript(role: str, transcript: list, summary: Optional[str], complet
 def main():
     role = get_role()
     logger.info(f"Session started for role: {role}")
-    print(f"\nGreat — starting a {NUM_QUESTIONS}-question mock interview for: {role}\n")
+    print(f"\nGreat -- starting a {NUM_QUESTIONS}-question mock interview for: {role}\n")
 
     transcript = []
     asked_questions = []
+    categories = assign_categories(NUM_QUESTIONS)
 
     try:
         for i in range(1, NUM_QUESTIONS + 1):
-            print(f"\n--- Question {i}/{NUM_QUESTIONS} ---")
-            question = generate_question(role, i, asked_questions)
+            category = categories[i - 1]
+            print(f"\n--- Question {i}/{NUM_QUESTIONS} ({category}) ---")
+            question = generate_question(role, i, asked_questions, category)
             asked_questions.append(question)
             print(f"\nInterviewer: {question}\n")
 
@@ -199,10 +249,10 @@ def main():
             feedback = get_feedback(role, question, answer)
             print(f"\n{feedback}")
 
-            transcript.append({"question": question, "answer": answer, "feedback": feedback})
+            transcript.append({"question": question, "answer": answer, "feedback": feedback, "category": category})
 
         print("\n" + "=" * 50)
-        print("  INTERVIEW COMPLETE — GENERATING SUMMARY")
+        print("  INTERVIEW COMPLETE -- GENERATING SUMMARY")
         print("=" * 50)
         summary = generate_summary(role, transcript)
         print(f"\n{summary}\n")
@@ -215,7 +265,7 @@ def main():
         logger.error(f"Session ended early due to AI service failure: {e}")
         print("\n" + "=" * 50)
         print("  Sorry, the AI service is unavailable right now.")
-        print("  Ending the session early — your progress so far is saved.")
+        print("  Ending the session early -- your progress so far is saved.")
         print("=" * 50)
         filepath = save_transcript(role, transcript, summary=None, completed=False)
         print(f"Partial session saved to: {filepath}")

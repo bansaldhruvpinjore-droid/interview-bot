@@ -1,0 +1,34 @@
+{
+  "role": "data analyst",
+  "timestamp": "2026-07-05T23:26:09.626842",
+  "completed": true,
+  "num_questions_answered": 5,
+  "transcript": [
+    {
+      "question": "Tell me about a time you had to analyze a dataset that was messy or incomplete. How did you approach cleaning it, and what decisions did you make about handling missing or inconsistent data?",
+      "answer": "dont know",
+      "feedback": "Score: 3/10  \nFeedback: The answer lacked a concrete example or explanation of problem-solving steps, which are critical for demonstrating technical competency. To improve, the candidate should describe specific experiences with messy data, including tools used (e.g., Python, SQL), strategies for handling missing/inconsistent data (e.g., imputation, outlier detection), and the rationale behind their decisions. Practicing this question with real-world scenarios would better showcase their analytical rigor and adaptability."
+    },
+    {
+      "question": "Tellme about a situation where you identified a key business insight through exploratory data analysis, the techniques you used, and how you verified that the insight was robust.",
+      "answer": "dont know",
+      "feedback": "Score: 3/10  \nFeedback: Your honesty about not having a prepared example is commendable, but the answer lacked any detail or structure. To improve, consider preparing a specific example from your experience (or a hypothetical scenario) where you used EDA techniques like visualization, statistical summaries, or clustering to uncover insights. Explain how you validated the findings (e.g., cross-validation, domain expert consultation, or A/B testing) to demonstrate robustness. A stronger answer would show technical depth and business impact."
+    },
+    {
+      "question": "Talk about a project where you had to merge multiple data sources that used different schemas and naming conventions. How did you design the integration process, what tools or scripts did you use to standardize the data, and how did you verify that the combined dataset was reliable for downstream analysis?",
+      "answer": "dont know",
+      "feedback": "Score: 0/10\nFeedback: There were no strengths to identify as the candidate provided no information. This is a critical failure, as the question tests fundamental data engineering and cleaning skills essential for any data analyst. The candidate should be coached to use the STAR method (Situation, Task, Action, Result) to describe a past experience, or if they lack professional experience, explain how they would theoretically approach the problem."
+    },
+    {
+      "question": "Describe a time when you had to explain a complex analytical finding or modeling result to a non-technical stakeholder who needed to make a decision based on it. How did you frame the uncertainty or limitations of the analysis, and what visual or narrative techniques did you use to ensure they understood the practical implications without oversimplifying?",
+      "answer": "dont know",
+      "feedback": "Score: 2/10  \nFeedback: The answer lacks any substantive example or demonstration of relevant skills. To improve, provide a specific instance (even hypothetical) where you translated technical findings into actionable insights, highlighting how you addressed uncertainty through clear language, visual aids, or framing risks. Data analysts must communicate effectively with non-technical stakeholders\u2014this question directly"
+    },
+    {
+      "question": "Describe a time when you discovered that a critical decision\u2011making metric was being misreported because of a subtle data\u2011quality issue. How did you identify the problem, what steps did you take to correct it, and how did you communicate the revised metric and its implications to both technical and business stakeholders to prevent future errors?",
+      "answer": "dont know",
+      "feedback": "Score: 2/10  \nFeedback:"
+    }
+  ],
+  "summary": "Overall, the candidate demonstrated a limited ability to provide concrete, structured answers to the data\u2011analyst questions, resulting in very low scores across all items. The recurring strengths were their candidness about not having prepared examples and a clear understanding of the feedback, indicating a willingness to learn. To succeed in a real interview they need to develop specific STAR\u2011structured stories that showcase data\u2011cleaning, EDA, data\u2011integration, and stakeholder\u2011communication skills, as well as practice articulating uncertainty and business impact. Additionally, building a portfolio of real or realistic hypothetical projects"
+}

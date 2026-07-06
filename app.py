@@ -20,6 +20,8 @@ def init_state():
         "role": "",
         "question_num": 1,
         "current_question": None,
+        "current_category": None,
+        "categories": [],
         "asked_questions": [],
         "transcript": [],
         "summary": None,
@@ -48,6 +50,7 @@ if st.session_state.phase == "role_input":
 
     if st.button("Start Interview", type="primary", disabled=not role_input.strip()):
         st.session_state.role = role_input.strip()
+        st.session_state.categories = interview.assign_categories(interview.NUM_QUESTIONS)
         st.session_state.phase = "interview"
         st.rerun()
 
@@ -55,15 +58,17 @@ if st.session_state.phase == "role_input":
 elif st.session_state.phase == "interview":
     role = st.session_state.role
     q_num = st.session_state.question_num
+    category = st.session_state.categories[q_num - 1]
 
     st.progress((q_num - 1) / interview.NUM_QUESTIONS)
     st.subheader(f"Question {q_num} of {interview.NUM_QUESTIONS} -- {role}")
+    st.caption(f"Category: {category}")
 
     if st.session_state.current_question is None:
         try:
             with st.spinner("Generating question..."):
                 question = interview.generate_question(
-                    role, q_num, st.session_state.asked_questions
+                    role, q_num, st.session_state.asked_questions, category
                 )
             st.session_state.current_question = question
             st.session_state.asked_questions.append(question)
@@ -85,6 +90,7 @@ elif st.session_state.phase == "interview":
                 "question": st.session_state.current_question,
                 "answer": answer.strip(),
                 "feedback": feedback,
+                "category": category,
             })
 
             if q_num >= interview.NUM_QUESTIONS:

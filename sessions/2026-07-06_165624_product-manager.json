@@ -1,0 +1,39 @@
+{
+  "role": "product manager",
+  "timestamp": "2026-07-06T16:56:24.384905",
+  "completed": true,
+  "num_questions_answered": 5,
+  "transcript": [
+    {
+      "question": "Describe a situation where you identified a critical market opportunity, but your team was hesitant to pursue it; how did you convince stakeholders and what was the outcome?",
+      "answer": "dont know",
+      "feedback": "Score: 1/10  \nFeedback: The response provides no substantive content, leaving the interviewer unable to assess your problem\u2011solving or leadership skills. A strong answer would describe a specific market insight, the team\u2019s initial hesitation, the tactics you used to build consensus (e.g., data\u2011driven analysis, pilot tests, ROI projections), and the measurable results after gaining stakeholder buy\u2011in. To improve, prepare a concise STAR\u2011structured example that highlights your analytical acumen, persuasive communication, and the impact of the initiative.",
+      "category": "Behavioral (a story about a past experience)"
+    },
+    {
+      "question": "Can you share an example of a time you had to communicate a product roadmap change to diverse stakeholders with opposing interests, and how you secured their alignment?",
+      "answer": "dont know",
+      "feedback": "Score: 4/10  \nFeedback: The candidate\u2019s inability to provide a concrete example signals a gap in practical experience or preparation for a product management role, which relies heavily on stakeholder communication. While the answer is honest, it misses an opportunity to demonstrate critical skills like conflict resolution, negotiation, and strategic communication. To improve, the candidate should reflect on past experiences where they navigated disagreements, articulated trade-offs, and built consensus. A strong response would include specific actions taken, stakeholders involved, and the outcome achieved. This question is pivotal for assessing leadership and communication abilities, so practicing structured storytelling (e.g., using the STAR method) would be beneficial.",
+      "category": "Communication and stakeholder management"
+    },
+    {
+      "question": "How would you handle a situation where a critical compliance requirement from a major client emerges mid\u2011sprint, threatening the upcoming product launch, and you must balance fixing the issue with maintaining the release schedule?",
+      "answer": "dont know",
+      "feedback": "Score: 2/10  \nFeedback: The candidate\u2019s response showed honesty but lacked any demonstration of problem\u2011solving or stakeholder management skills. A strong answer would outline immediate steps (e.g., assess impact, communicate with the client and team, reprioritize work, and negotiate scope or timeline). Improving by presenting a clear, structured approach would better showcase the candidate\u2019s product\u2011management capabilities.",
+      "category": "Situational judgment (a hypothetical scenario)"
+    },
+    {
+      "question": "Tell me about a time you had to take ownership of a product that was underperforming in a competitive market. What steps did you take to understand the root causes, rally the team, and drive a turnaround?",
+      "answer": "dont know",
+      "feedback": "Score: 2/10  \nFeedback: The answer lacks substance, as \"don\u2019t know\" fails to demonstrate experience or problem-solving skills critical for a product manager role. Improvements include preparing specific examples of ownership in challenging situations, even if hypothetical, to showcase analytical thinking, team collaboration, and turnaround strategies. A score of 2 reflects minimal effort to address the question\u2019s core requirements.",
+      "category": "Leadership and ownership"
+    },
+    {
+      "question": "Walk me through a time you had to make a significant technical trade\u2011off \u2014 for example, choosing between building a custom solution versus buying/integrating a third\u2011party service, or deciding on a data model that impacted downstream analytics \u2014 how did you evaluate the options, involve engineering, and communicate the decision to non\u2011technical stakeholders?",
+      "answer": "dont know",
+      "feedback": "Score: 3/10  \nFeedback: Your honesty about not having a specific example is commendable, but the answer lacked any structured thinking or preparation. To improve, either share a hypothetical trade-off scenario you\u2019d navigate (e.g., custom vs. third-party tool) or outline your decision-making framework (e.g., cost, scalability, team expertise). Non-technical stakeholders need clear, jargon-free communication about *why* a choice matters, not just *what* was chosen. Practice articulating trade-offs using the \u201csituation-action-impact\u201d structure to demonstrate PM competency.",
+      "category": "Technical / role-specific skills"
+    }
+  ],
+  "summary": "Overall, the candidate\u2019s performance was consistently weak, with each answer limited to \u201cdon\u2019t know\u201d and scores ranging from 1 to 4 out of 10. The recurring strengths are honesty about gaps and the willingness to acknowledge uncertainty, which shows self\u2011awareness. Areas needing improvement include preparing concrete, structured examples using the STAR framework, demonstrating problem\u2011solving and stakeholder\u2011management tactics, and articulating decision\u2011making processes for technical trade\u2011offs. Before a real interview, the candidate should rehearse specific case studies, develop a clear storytelling structure, and anticipate likely PM\u2011focused questions. **Overall score: 2/10.**"
+}
