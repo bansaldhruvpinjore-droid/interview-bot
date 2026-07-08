@@ -68,6 +68,55 @@ QUESTION_CATEGORIES = [
     "Situational judgment (a hypothetical scenario)",
 ]
 
+CATEGORY_ANGLES = {
+    "Behavioral (a story about a past experience)": [
+        "a conflict with a coworker or teammate",
+        "a project that failed or went wrong",
+        "receiving critical feedback",
+        "working under a tight deadline",
+        "mentoring or helping someone else",
+    ],
+    "Technical / role-specific skills": [
+        "debugging a hard-to-find issue",
+        "designing a system or architecture",
+        "evaluating a trade-off between two technical approaches",
+        "learning a new tool or technology quickly",
+        "improving performance or scalability",
+    ],
+    "Problem-solving / analytical thinking": [
+        "handling incomplete or messy data/information",
+        "breaking down an ambiguous problem",
+        "prioritizing competing tasks with limited resources",
+        "making a decision without complete information",
+        "root-causing a recurring issue",
+    ],
+    "Communication and stakeholder management": [
+        "explaining a technical concept to a non-technical audience",
+        "managing disagreement between stakeholders",
+        "delivering unwelcome news",
+        "aligning a team around a shared goal",
+        "negotiating scope or timeline",
+    ],
+    "Leadership and ownership": [
+        "taking initiative without being asked",
+        "owning a mistake and fixing it",
+        "leading without formal authority",
+        "motivating a struggling team member",
+        "driving a project to completion despite obstacles",
+    ],
+    "Situational judgment (a hypothetical scenario)": [
+        "an unexpected production or operational issue",
+        "a sudden change in requirements or priorities",
+        "an ethical dilemma",
+        "a resource or staffing shortage",
+        "conflicting instructions from two managers",
+    ],
+}
+
+
+def pick_angle(category: str) -> str:
+    return random.choice(CATEGORY_ANGLES.get(category, [""]))
+
 
 class AIServiceError(Exception):
     """Raised when the AI backend fails after all retries are exhausted."""
@@ -142,13 +191,15 @@ def get_role() -> str:
 
 def generate_question(role: str, question_number: int, asked_so_far: list, category: str) -> str:
     already_asked = "\n".join(f"- {q}" for q in asked_so_far) or "None yet"
+    angle = pick_angle(category)
+    angle_line = f"\nSpecific angle to focus on: {angle}" if angle else ""
     prompt = f"""You are an interviewer for a {role} position.
 Generate ONE realistic interview question (question #{question_number} of {NUM_QUESTIONS}).
 
-Category for this question: {category}
+Category for this question: {category}{angle_line}
 
 Rules:
-- The question MUST fit the category above.
+- The question MUST fit the category above, and should draw on the specific angle if one is given.
 - Do not repeat or closely resemble any of these already-asked questions:
 {already_asked}
 - Return ONLY the question text, nothing else (no preamble, no numbering)."""
