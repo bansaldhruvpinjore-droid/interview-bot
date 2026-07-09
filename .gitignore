@@ -1,5 +1,14 @@
 venv/
 .env
 __pycache__/
-*.pycsessions/
+*.pyc
+sessions/
 logs/
+.DS_Store
+*.egg-info/
+dist/
+build/
+.idea/
+.vscode/
+*.log
+test_sessions_tmp/
