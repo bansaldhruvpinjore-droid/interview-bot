@@ -1,16 +1,14 @@
 ﻿"""
-Text-Only Interview Bot (Version 1 -- hardened)
-------------------------------------------------
+Text-Only Interview Bot (Version 1 -- hardened + analytics)
+---------------------------------------------------------------
 A terminal app that:
-  1. Asks the user to pick a role
-  2. Generates interview questions across varied categories with a free
-     AI model via OpenRouter
+  1. Asks the user to pick a role (optionally provide a resume)
+  2. Generates interview questions tailored to their background
   3. Takes typed answers
   4. Gets AI feedback + a score for each answer
   5. Prints a final summary
   6. Saves the full session to a JSON transcript file
   7. Logs events to a file, and exits gracefully (saving partial progress)
-     if the AI service fails.
 
 Run with: python interview.py
 """
@@ -22,8 +20,9 @@ import json
 import time
 import random
 import logging
+import glob
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List, Dict
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -119,7 +118,6 @@ def pick_angle(category: str) -> str:
 
 
 class AIServiceError(Exception):
-    """Raised when the AI backend fails after all retries are exhausted."""
     pass
 
 
@@ -189,14 +187,26 @@ def get_role() -> str:
     return role
 
 
-def generate_question(role: str, question_number: int, asked_so_far: list, category: str) -> str:
+def get_resume() -> Optional[str]:
+    print("\n(Optional) Paste a brief resume or background summary to tailor questions to your experience.")
+    print("(Leave blank to skip and get generic questions for this role)")
+    resume = input("Your background: ").strip()
+    return resume if resume else None
+
+
+def generate_question(role: str, question_number: int, asked_so_far: list, category: str, resume: Optional[str] = None) -> str:
     already_asked = "\n".join(f"- {q}" for q in asked_so_far) or "None yet"
     angle = pick_angle(category)
     angle_line = f"\nSpecific angle to focus on: {angle}" if angle else ""
+    
+    resume_context = ""
+    if resume:
+        resume_context = f"\nCandidate's background: {resume}\nTailor the question to their specific experience if possible."
+    
     prompt = f"""You are an interviewer for a {role} position.
 Generate ONE realistic interview question (question #{question_number} of {NUM_QUESTIONS}).
 
-Category for this question: {category}{angle_line}
+Category for this question: {category}{angle_line}{resume_context}
 
 Rules:
 - The question MUST fit the category above, and should draw on the specific angle if one is given.
@@ -253,7 +263,7 @@ Write a short overall summary (5-8 sentences):
     return ask_ai(prompt, temperature=0.5)
 
 
-def save_transcript(role: str, transcript: list, summary: Optional[str], completed: bool) -> str:
+def save_transcript(role: str, transcript: list, summary: Optional[str], completed: bool, resume: Optional[str] = None) -> str:
     timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
     safe_role = role.lower().replace(" ", "-")
     filename = f"{timestamp}_{safe_role}.json"
@@ -261,6 +271,7 @@ def save_transcript(role: str, transcript: list, summary: Optional[str], complet
 
     session_data = {
         "role": role,
+        "resume": resume,
         "timestamp": datetime.now().isoformat(),
         "completed": completed,
         "num_questions_answered": len(transcript),
@@ -275,9 +286,26 @@ def save_transcript(role: str, transcript: list, summary: Optional[str], complet
     return filepath
 
 
+def load_all_sessions() -> List[Dict]:
+    sessions = []
+    for filepath in sorted(glob.glob(os.path.join(SESSIONS_DIR, "*.json")), reverse=True):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                session = json.load(f)
+                sessions.append(session)
+        except Exception as e:
+            logger.warning(f"Could not load session {filepath}: {e}")
+    return sessions
+
+
 def main():
     role = get_role()
+    resume = get_resume()
+    
     logger.info(f"Session started for role: {role}")
+    if resume:
+        logger.info(f"Resume provided: {resume[:100]}...")
+    
     print(f"\nGreat -- starting a {NUM_QUESTIONS}-question mock interview for: {role}\n")
 
     transcript = []
@@ -288,7 +316,7 @@ def main():
         for i in range(1, NUM_QUESTIONS + 1):
             category = categories[i - 1]
             print(f"\n--- Question {i}/{NUM_QUESTIONS} ({category}) ---")
-            question = generate_question(role, i, asked_questions, category)
+            question = generate_question(role, i, asked_questions, category, resume)
             asked_questions.append(question)
             print(f"\nInterviewer: {question}\n")
 
@@ -308,7 +336,7 @@ def main():
         summary = generate_summary(role, transcript)
         print(f"\n{summary}\n")
 
-        filepath = save_transcript(role, transcript, summary, completed=True)
+        filepath = save_transcript(role, transcript, summary, completed=True, resume=resume)
         print(f"Session saved to: {filepath}")
         logger.info("Session completed successfully.")
 
@@ -318,7 +346,7 @@ def main():
         print("  Sorry, the AI service is unavailable right now.")
         print("  Ending the session early -- your progress so far is saved.")
         print("=" * 50)
-        filepath = save_transcript(role, transcript, summary=None, completed=False)
+        filepath = save_transcript(role, transcript, summary=None, completed=False, resume=resume)
         print(f"Partial session saved to: {filepath}")
         sys.exit(1)
 

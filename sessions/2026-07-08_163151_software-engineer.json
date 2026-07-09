@@ -1,0 +1,39 @@
+{
+  "role": "software engineer",
+  "timestamp": "2026-07-08T16:31:51.342725",
+  "completed": true,
+  "num_questions_answered": 5,
+  "transcript": [
+    {
+      "question": "Can you describe a specific instance where you recognized a problem or opportunity in your previous role and took the initiative to address it without being prompted, outlining your approach, the actions you took, and the results you achieved?",
+      "answer": "no",
+      "feedback": "Score: 3/10  \nFeedback: Your answer lacked a concrete example, which is critical for demonstrating initiative and problem-solving skills. While honesty is valued, you should have either provided a specific instance or elaborated on why you couldn\u2019t think of one. Consider preparing examples from your experience or academic projects to showcase proactive thinking. A stronger response would highlight a challenge you identified and the steps you took to address it.",
+      "category": "Leadership and ownership"
+    },
+    {
+      "question": "Describe a situation where you had to rapidly master a new programming language, framework, or tool to meet a project deadline. What steps did you take to learn it efficiently, and how did you ensure you could apply it effectively without compromising quality?",
+      "answer": "dont know",
+      "feedback": "Score: 3/10  \nFeedback: The candidate failed to provide a substantive answer, which is concerning for a technical role requiring adaptability. A strong response would include a specific example, the learning approach used, and evidence of successful application. Prepare concrete examples of times you've quickly learned new technologies, focusing on structured methods like documentation review, prototyping, and peer collaboration. Practice articulating your learning process clearly and confidently.",
+      "category": "Technical / role-specific skills"
+    },
+    {
+      "question": "Can you walk me through how you would approach analyzing and decomposing a loosely defined business requirement\u2014such as improving user engagement on a mobile app\u2014into concrete technical steps and measurable outcomes?",
+      "answer": "dont understand",
+      "feedback": "Score: 2/10  \nFeedback: The response did not address the question at all, so there were no strengths to highlight. To improve, the candidate should outline a clear process\u2014starting with gathering stakeholder input, defining success metrics, breaking the goal into smaller hypotheses, then planning experiments, data collection, and iteration. Demonstrating a structured approach and linking each step to measurable outcomes would show both analytical thinking and practical execution.",
+      "category": "Problem-solving / analytical thinking"
+    },
+    {
+      "question": "User Safety: safe",
+      "answer": "yess",
+      "feedback": "Score: 3/10  \nFeedback: The candidate recognized the question and gave a brief affirmative response, which shows they understood the basic intent. However, the answer \u201cyess\u201d contains a spelling error and lacks any elaboration on user\u2011safety practices, indicating a need for more precise communication. A stronger response would have been a clear \u201cYes\u201d followed by a concise explanation of relevant safety measures. Improving attention to detail and providing brief, accurate details would raise the overall quality of the answer.",
+      "category": "Situational judgment (a hypothetical scenario)"
+    },
+    {
+      "question": "Describe a situation where you and a coworker disagreed on a technical approach, how you handled the disagreement, and what the outcome was.",
+      "answer": "such situation never occur to me yet if it occures i consult with my seniors and let them handle the situation",
+      "feedback": "Score: 4/10  \nFeedback: You showed a willingness to seek guidance when conflicts arise, which is a positive professional attitude. However, the answer lacks specific details about the technical disagreement, your communication strategy, and the resulting outcome, making it hard to assess your conflict\u2011resolution skills. To strengthen the response, describe a concrete scenario: the differing approaches, how you discussed them with your coworker, any data or prototypes you used to reach consensus, and the final impact on the project. Adding these specifics will demonstrate your ability to handle technical disputes and collaborate effectively.",
+      "category": "Behavioral (a story about a past experience)"
+    }
+  ],
+  "summary": "Overall, the candidate\u2019s performance was weak, with most answers lacking detail, concrete examples, or structured reasoning, resulting in low scores across the board. Recurring strengths include a basic understanding of the questions asked, an honest acknowledgment when they didn\u2019t know an answer, and a demonstrated willingness to seek guidance from seniors when faced with conflict or uncertainty. To improve before a real interview, the candidate should practice delivering specific, STAR\u2011formatted examples that highlight initiative, rapid learning, and problem\u2011solving, and work on articulating a clear, step\u2011by\u2011step approach to ambiguous requirements. Additionally, they need to sharpen communication skills\u2014eliminating spelling errors, providing concise yet complete explanations, and preparing concise stories about technical disagreements and resolutions. Based on the average of the individual scores, an overall rating of **3\u202fout of\u202f10** reflects the current readiness level."
+}

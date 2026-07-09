@@ -1,0 +1,40 @@
+{
+  "role": "software engineer",
+  "resume": "no experience fresher",
+  "timestamp": "2026-07-09T16:04:52.292854",
+  "completed": true,
+  "num_questions_answered": 5,
+  "transcript": [
+    {
+      "question": "Imagine you\u2019re given a task that requires using a tool or technology you\u2019ve never worked with before (for example, a new frontend framework, a cloud service, or a database). Walk me through the concrete steps you would take to get up to speed quickly and start contributing effectively, referencing any relevant experiences from your coursework or personal projects.",
+      "answer": "by doing hardwork i also do the smartwork i take the help from the ai tools that helps us to learn more quickly and efficiently",
+      "feedback": "Score: 3/10\nFeedback: Your answer lacks specific, actionable steps for tackling unfamiliar technologies. While mentioning AI tools shows awareness of modern resources, you didn't explain how you'd systematically approach learning\u2014for example, by breaking down documentation, building small prototypes, or leveraging community resources. You also missed opportunities to reference concrete experiences from coursework or projects that demonstrate your learning process. To improve, focus on outlining a clear methodology: research, experiment, iterate, and apply\u2014and back it up with specific examples of how you've successfully learned new technologies before.",
+      "category": "Technical / role-specific skills"
+    },
+    {
+      "question": "Imagine you\u2019re given a raw CSV export from a marketing campaign that contains missing values, inconsistent date formats, duplicate rows, and text fields with extra whitespace or misspellings. Your team needs to produce a clean dataset for a sales report, but you have no prior experience working with production\u2011grade data cleaning\u2014only coursework projects where you handled clean data and a personal project that briefly touched on handling missing entries. Walk me through the concrete steps you would take to assess, clean, and validate this messy dataset, including how you would decide what to impute or discard, how you would document your process, and which tools or techniques (e.g., pandas, SQL, version control) you would leverage, referencing any relevant learning from your studies or project experience.",
+      "answer": "no",
+      "feedback": "Score: 0/10  \nFeedback: The answer provides no content at all\u2014there\u2019s no description of assessment, cleaning steps, documentation, or tools used. To improve, the candidate should outline a clear, concrete workflow (e.g., initial inspection, handling missing values, standardizing dates, de\u2011duplicating, validating outputs) and mention specific tools such as pandas, SQL, version control, and how they would document decisions. This would demonstrate understanding of production\u2011grade data cleaning.",
+      "category": "Problem-solving / analytical thinking"
+    },
+    {
+      "question": "User Safety: safe",
+      "answer": "no",
+      "feedback": "Score: 3/10  \nFeedback: The answer was too brief and lacked depth. While recognizing a potential issue with user safety is a start, the response should have explained specific measures (e.g., encryption, authentication, compliance) and demonstrated understanding of risks. Avoid one-word answers; focus on clarity and actionable solutions. The brevity made it difficult to assess the candidate's technical or strategic thinking. A stronger response would balance acknowledgment of the problem with concrete examples of mitigation strategies.",
+      "category": "Behavioral (a story about a past experience)"
+    },
+    {
+      "question": "Imagine you are two weeks into a six-week capstone project or internship assignment building a specific feature\u2014say, a real-time notification module for a web app. You\u2019ve just finished the backend API design and started on the frontend integration when the product owner informs you that leadership has pivoted: the notification module is being deprioritized, and you need to switch immediately to building a data-export tool that lets users download custom CSV reports. The deadline for the overall project hasn't changed. Walk me through how you would handle that conversation, reorganize your remaining time, and decide what to do with the code you\u2019ve already written for the notifications.",
+      "answer": "no",
+      "feedback": "Score: 0/10  \nFeedback: The response did not address the question at all, so there is nothing to praise. To improve, you should outline how you would communicate the pivot to the product owner and team, reassess the remaining four weeks, prioritize the new data\u2011export feature while salvaging any reusable components (e.g., authentication, logging, or API patterns) from the notification work, and create a revised plan with clear milestones. Providing a structured thought process demonstrates problem\u2011solving and adaptability, which are key traits interviewers look for.",
+      "category": "Situational judgment (a hypothetical scenario)"
+    },
+    {
+      "question": "Imagine you\u2019re leading a university group project to build a mobile app, and the product owner wants to add a complex real\u2011time analytics feature while your technical teammate argues it will jeopardize the deadline and quality; how would you facilitate this disagreement, ensure both stakeholders feel heard, and reach a mutually acceptable decision that keeps the project on track?",
+      "answer": "no",
+      "feedback": "Score: 1/10  \nFeedback: Your response did not address the scenario at all, so it misses the opportunity to demonstrate conflict\u2011resolution, stakeholder management, and technical prioritization skills. To improve, outline a structured approach\u2014e.g., gather data, set a neutral meeting, use a decision matrix, and propose a phased rollout or prototype to satisfy both parties. Show how you\u2019d keep the project on schedule by aligning the feature scope with the product roadmap and resource constraints. This would illustrate your ability to mediate, negotiate, and deliver a balanced outcome.",
+      "category": "Communication and stakeholder management"
+    }
+  ],
+  "summary": "**Overall Performance Impression**  \nThe candidate struggled significantly to engage with the mock interview, providing substantive answers for only one of the five questions. Four responses were either a single word (\"no\") or entirely missing, making it impossible to assess technical competence, problem-solving ability, or"
+}
